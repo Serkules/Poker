@@ -11,6 +11,8 @@ class debug_logger(object):
             fh2.setLevel(logging.INFO)
             er = logging.handlers.RotatingFileHandler('log/errors.log', maxBytes=2000000, backupCount=0)
             er.setLevel(logging.WARNING)
+            rt = logging.handlers.RotatingFileHandler('log/realtime.log', maxBytes=2000000, backupCount=2)
+            rt.setLevel(logging.CRITICAL)
             ch = logging.StreamHandler(sys.stdout)
             ch.setLevel(logging.WARNING)
             fh.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
