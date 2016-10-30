@@ -482,6 +482,7 @@ class TableScreenBased(Table):
                 self.position_utg_plus = n
                 self.dealer_position = (9 - n) % 6  # 0 is myself, 1 is player to the left
                 self.logger.info('Bot position is UTG+' + str(self.position_utg_plus))  # 0 mean bot is UTG
+                self.logger.critical('Bot position is UTG+' + str(self.position_utg_plus))  # 0 mean bot is UTG
 
         if self.position_utg_plus == '':
             self.position_utg_plus = 0
@@ -489,6 +490,7 @@ class TableScreenBased(Table):
             self.logger.error('Could not determine dealer position. Assuming UTG')
         else:
             self.logger.info('Dealer position (0 is myself and 1 is next player): ' + str(self.dealer_position))
+            self.logger.critical('Dealer position (0 is myself and 1 is next player): ' + str(self.dealer_position))
 
         self.big_blind_position_abs_all = (self.dealer_position + 2) % 6  # 0 is myself, 1 is player to my left
         self.big_blind_position_abs_op = self.big_blind_position_abs_all - 1
