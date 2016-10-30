@@ -226,9 +226,13 @@ class TableScreenBased(Table):
             exit()
 
         self.logger.info("---")
+        self.logger.critical("---")
         self.logger.info("Gamestage: " + self.gameStage)
+        self.logger.critical("Gamestage: " + self.gameStage)
         self.logger.info("Cards on table: " + str(self.cardsOnTable))
+        self.logger.critical("Cards on table: " + str(self.cardsOnTable))
         self.logger.info("---")
+        self.logger.critical("---")
 
         self.max_X = 1 if self.gameStage != 'PreFlop' else 0.86
 
@@ -299,6 +303,7 @@ class TableScreenBased(Table):
         if len(self.mycards) == 2:
             self.myFundsChange = float(self.myFunds) - float(str(h.myFundsHistory[-1]).strip('[]'))
             self.logger.info("My cards: " + str(self.mycards))
+            self.logger.critical("My cards: " + str(self.mycards))
             return True
         else:
             self.logger.debug("Did not find two player cards: " + str(self.mycards))
@@ -649,6 +654,7 @@ class TableScreenBased(Table):
         self.get_game_number_on_screen()
         if h.previousCards != self.mycards:
             self.logger.info("+++========================== NEW HAND ==========================+++")
+            self.logger.critical("+++========================== NEW HAND ==========================+++")
             self.time_new_cards_recognised = datetime.datetime.utcnow()
             h.lastGameID = str(h.GameID)
             h.GameID = int(round(np.random.uniform(0, 999999999), 0))
